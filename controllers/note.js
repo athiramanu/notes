@@ -1,6 +1,6 @@
 const Note = require("../models/note");
 const maxNoteLength = 10000;
-const maxRecords = 1;
+const maxRecords = 1000;
 
 let returnError = (res) => {
     res.status(400).json({
