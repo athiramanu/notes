@@ -1,4 +1,6 @@
 const Note = require("../models/note");
+const maxNoteLength = 10000;
+const maxRecords = 1;
 
 let returnError = (res) => {
     res.status(400).json({
@@ -6,7 +8,22 @@ let returnError = (res) => {
     });
 };
 
+let deleteNote = (res) => {
+    Note.findOne().sort({created_at: -1}).exec((err, note) => {
+        Note.deleteOne(note);
+    });
+};
+
+let makeMemory = (res) => {
+    Note.count({}, (err, count) => {
+        if (count > maxRecords) {
+            deleteNote(res);
+        }
+    })
+}
+
 let createNote  = (res, name) => {
+    makeMemory(res);
     let newNote = new Note({name: name, text: ''});
     newNote.save((err, note) => {
         if (err) {
@@ -16,6 +33,12 @@ let createNote  = (res, name) => {
         }
     });
 };
+
+let trimText = (text) => {
+    if (text.length <= maxNoteLength) 
+        return text;
+    return text.substring(0, maxNoteLength);
+}
 
 exports.getNoteName = (req, res, next, id) => {
     req.note = id;
@@ -37,7 +60,22 @@ exports.getNote = (req, res) => {
 
 exports.saveNote = (req, res) => {
     let name = req.note;
-    
+    let text = trimText(req.body.text);
+
+    Note.findOneAndUpdate(
+        {name: name},
+        { $set: { "text" : text } },
+        {new: true}
+    ).exec((err, note) => {
+        if (err) {
+            returnError(res);
+        } else {
+            res.status(200).json({
+                "name": note.name, 
+                "text": note.text
+            });
+        }
+    })
 };
 
 exports.loadHome = (req, res) => {
