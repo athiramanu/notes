@@ -53,7 +53,7 @@ exports.getNote = (req, res) => {
         } else if(note.length == 0) {
             createNote(res, name);
         } else {
-            res.json(note);
+            res.json(note[0]);
         }
     });
 };
@@ -76,8 +76,4 @@ exports.saveNote = (req, res) => {
             });
         }
     })
-};
-
-exports.loadHome = (req, res) => {
-    res.send("meeeeee");
 };

@@ -1,14 +1,17 @@
-const mongoose = require("mongoose");
-const express = require("express");
+const config     = require("config");
+const mongoose   = require("mongoose");
+const express    = require("express");
 const bodyParser = require("body-parser");
+const noteRoute  = require("./routes/note");
 
-const app = express();
-const port = 3000;
+const app        = express();
 
-const noteRoute = require("./routes/note");
+const port       = config.get("port");
+const dbUrl      = config.get("dbUrl");
+
 
 mongoose.connect(
-    'mongodb://127.0.0.1/my_database', 
+    dbUrl, 
     {useNewUrlParser: true, useUnifiedTopology: true}
 ).then(() => {
     console.log("DB connected");
@@ -21,5 +24,5 @@ app.use(bodyParser.json());
 app.use("/", noteRoute);
 
 app.listen(port, () => {
-    console.log("Listening....");
+    console.log(`Listening to port ${port}....`);
 });
