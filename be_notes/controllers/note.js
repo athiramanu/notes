@@ -53,7 +53,7 @@ exports.getNote = (req, res) => {
         } else if(note.length == 0) {
             createNote(res, name);
         } else {
-            res.json(note[0]);
+            res.status(200).json(note);
         }
     });
 };

@@ -3,6 +3,7 @@ const mongoose   = require("mongoose");
 const express    = require("express");
 const bodyParser = require("body-parser");
 const noteRoute  = require("./routes/note");
+const cors       = require('cors')
 
 const app        = express();
 
@@ -19,7 +20,8 @@ mongoose.connect(
     console.log("Error: " + e);
 })
 
-app.use(bodyParser.json()); 
+app.use(bodyParser.json());
+app.use(cors());
 
 app.use("/", noteRoute);
 
