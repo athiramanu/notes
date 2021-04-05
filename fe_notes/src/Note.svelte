@@ -36,7 +36,7 @@
 		return fetch(`http://localhost:3000/${name}`)
 			.then(r => r.json())
 			.then(data => {
-				text = data[0] ? data[0].text : data.text
+				text = data.text
 			});
 	}
 

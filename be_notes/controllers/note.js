@@ -29,7 +29,7 @@ let createNote  = (res, name) => {
         if (err) {
             returnError(res)
         } else {
-            res.status(200).json(note);
+            res.status(200).json({"text": note.text});
         }
     });
 };
@@ -53,7 +53,8 @@ exports.getNote = (req, res) => {
         } else if(note.length == 0) {
             createNote(res, name);
         } else {
-            res.status(200).json(note);
+            note = note[0];
+            res.status(200).json({"text": note.text });
         }
     });
 };
@@ -71,7 +72,6 @@ exports.saveNote = (req, res) => {
             returnError(res);
         } else {
             res.status(200).json({
-                "name": note.name, 
                 "text": note.text
             });
         }
