@@ -17,7 +17,12 @@
     h1, 
     .steps strong,
     .disclaimer strong {
-		color: var(--lightThemeColor);
+		color: var(--lightThemeHeader);
+	}
+
+    .dark .steps strong,
+    .dark .disclaimer strong {
+		color: var(--darkThemeHeader);
 	}
 
     .disclaimer {

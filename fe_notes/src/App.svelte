@@ -12,6 +12,11 @@
 		height: 100vh;
 	}
 
+	main.dark {
+		background-color: var(--darkThemeBackground);
+		color: var(--darkThemeText);
+	}
+
 	@media (min-width: 640px) {
 		main {
 			max-width: none;
@@ -30,7 +35,6 @@
 	$: active = uri.split('/')[1] || 'home';
 
 	let dark;
-
 	const unsubscribe = darkTheme.subscribe(value => {
 		dark = value;
 	})

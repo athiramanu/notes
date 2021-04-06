@@ -54,15 +54,20 @@
 </script>
 
 <style>
-    textArea {
+    textarea {
 		width: 70%;
 		min-height: 30em;
 		resize: none;
 		margin-top: 80px;
 	}
 
+	.dark textarea {
+		background-color: var(--darkThemeBackground);
+		color: var(--darkThemeText);
+	}
+
 	button {
-		background-color: var(--lightThemeColor);
+		background-color: var(--lightThemeHeader);
 		border: none;
 		color: white;
 		padding: 15px 32px;
@@ -74,6 +79,7 @@
 		cursor: pointer;
 		font-weight: bold;
 	}
+	
 	.save {
 		width: 70%;
 	    margin: 0 auto;

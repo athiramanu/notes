@@ -1,9 +1,23 @@
-<nav>
-    <a href="/" class="homepage"><img src="/logo.png" alt="Scribble It"></a>
-    <label class="switch" on:click="{toggle}">
-        <input type="checkbox">
-        <span class="slider round"></span>
-    </label>
+<nav class:dark={dark}>
+    <a href="/" class="homepage">
+        {#if dark}
+        <img src="/logoDark.png" alt="Scribble It">
+        {:else}
+        <img src="/logo.png" alt="Scribble It">
+        {/if}
+    </a>
+    {#if dark}
+        <label class="switch" on:click="{toggle}">
+            <input type="checkbox" checked>
+            <span class="slider round"></span>
+        </label>
+    {:else}
+        <label class="switch" on:click="{toggle}">
+            <input type="checkbox">
+            <span class="slider round"></span>
+        </label>
+    {/if}
+    
 </nav>
 
 <style>
@@ -11,9 +25,12 @@
         top: 0;
         left: 0;
         width: 100vw;
-        box-shadow: 0 -0.4rem 0.9rem 0.2rem rgb(0 0 0 / 50%);
+        box-shadow: 0 -0.4rem 0.9rem 0.2rem var(--lightThemeShadow);
         position: fixed;
-        background: white;
+    }
+
+    nav.dark {
+        box-shadow: 0 -0.4rem 0.9rem 0.2rem var(--darkThemeShadow); 
     }
 
     .homepage {
@@ -52,8 +69,6 @@
         right: 0;
         bottom: 0;
         background-color: #ccc;
-        -webkit-transition: .4s;
-        transition: .4s;
     }
 
     .slider:before {
@@ -68,12 +83,17 @@
         transition: .4s;
     }
 
+
+    .dark .slider:before {
+        background-color: var(--darkThemeBackground);
+    }
+
     input:checked + .slider {
-        background-color: #2196F3;
+        background-color: var(--darkThemeHeader);
     }
 
     input:focus + .slider {
-        box-shadow: 0 0 1px #2196F3;
+        box-shadow: 0 0 1px var(--darkThemeHeader);
     }
 
     input:checked + .slider:before {
@@ -94,9 +114,15 @@
 <script>
     import { darkTheme } from "./store.js"
 
+    let dark;
+	const unsubscribe = darkTheme.subscribe(value => {
+		dark = value;
+	});
+
     function toggle(event) {
         if (event.target.classList.contains("slider")) {
             darkTheme.update(value => !value);
+            localStorage.setItem("darkTheme", dark);
         }
     }
 </script>

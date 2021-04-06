@@ -1,7 +1,25 @@
 :root {
-	--lightThemeColor: #009688;
-	--darkThemeColor: #ffffff;
-	--warning: #ff3e00
+	--lightThemeHeader: #009688;
+	--lightThemeShadow: rgb(0 0 0 / 50%);
+
+	--darkThemeHeader: #81d4c0;
+	--darkThemeText: #ffe6b3;
+	--darkThemeBackground: #1b1919;
+	--darkThemeShadow: rgb(64 62 62 / 50%)
+}
+
+.dark textarea {
+	background-color: var(--darkThemeBackground);
+	color: var(--darkThemeText);
+}
+
+.dark .save button {
+	background-color: var(--darkThemeHeader);
+	color: var(--darkThemeBackground);
+}
+
+.dark h1 {
+	color: var(--darkThemeHeader) !important;
 }
 
 body {
