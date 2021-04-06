@@ -2,8 +2,7 @@
 	<title>NotePad</title>
 </svelte:head>
 
-<h1>Type your text here and access it from anywhere</h1>
-<textarea type="text" class="textArea" bind:value={text}></textarea>
+<textarea type="text" bind:value={text}></textarea>
 <div class="save">
 	<button on:click="{save}">Save</button>
 </div>
@@ -55,17 +54,15 @@
 </script>
 
 <style>
-    .textArea {
+    textArea {
 		width: 70%;
 		min-height: 30em;
 		resize: none;
+		margin-top: 80px;
 	}
-	h1 {
-		color: #ff3e00;
-		font-weight: 100;
-	}
+
 	button {
-		background-color: #ff3e00; /* Green */
+		background-color: var(--lightThemeColor);
 		border: none;
 		color: white;
 		padding: 15px 32px;
@@ -75,9 +72,11 @@
 		font-size: 16px;
 		float: right;
 		cursor: pointer;
+		font-weight: bold;
 	}
 	.save {
 		width: 70%;
 	    margin: 0 auto;
+		font-weight: bold;
 	}
 </style>

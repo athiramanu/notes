@@ -1,14 +1,39 @@
-<main>
+<main class:dark={dark}>
+	<Navbar />
 	<svelte:component this={Route} {params} />
 </main>
 
+<style>
+	main {
+		text-align: center;
+		padding: 1em;
+		max-width: 240px;
+		margin: 0 auto;
+		height: 100vh;
+	}
+
+	@media (min-width: 640px) {
+		main {
+			max-width: none;
+		}
+	}
+</style>
+
 <script>
-	import Navaid from 'navaid';
+	import { darkTheme } from './store.js'
 	import { onDestroy } from 'svelte';
+	import Navaid from 'navaid';
+	import Navbar from './Navbar.svelte';
 
 	let Route, params={}, active;
 	let uri = location.pathname;
 	$: active = uri.split('/')[1] || 'home';
+
+	let dark;
+
+	const unsubscribe = darkTheme.subscribe(value => {
+		dark = value;
+	})
 
 	function run(thunk, obj) {
 		const target = uri;
@@ -47,18 +72,3 @@
 
 	onDestroy(router.unlisten);
 </script>
-
-<style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
-</style>
