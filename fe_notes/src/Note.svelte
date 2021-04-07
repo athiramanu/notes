@@ -61,11 +61,6 @@
 		margin-top: 80px;
 	}
 
-	.dark textarea {
-		background-color: var(--darkThemeBackground);
-		color: var(--darkThemeText);
-	}
-
 	button {
 		background-color: var(--lightThemeHeader);
 		border: none;
@@ -79,7 +74,7 @@
 		cursor: pointer;
 		font-weight: bold;
 	}
-	
+
 	.save {
 		width: 70%;
 	    margin: 0 auto;

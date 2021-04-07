@@ -1,4 +1,4 @@
-<nav class:dark={dark}>
+<nav>
     <a href="/" class="homepage">
         {#if dark}
         <img src="/logoDark.png" alt="Scribble It">
@@ -6,18 +6,10 @@
         <img src="/logo.png" alt="Scribble It">
         {/if}
     </a>
-    {#if dark}
-        <label class="switch" on:click="{toggle}">
-            <input type="checkbox" checked>
-            <span class="slider round"></span>
-        </label>
-    {:else}
-        <label class="switch" on:click="{toggle}">
-            <input type="checkbox">
-            <span class="slider round"></span>
-        </label>
-    {/if}
-    
+    <label class="switch" on:click="{toggle}">
+        <input type="checkbox" bind:checked={dark}>
+        <span class="slider round"></span>
+    </label>
 </nav>
 
 <style>
@@ -29,10 +21,7 @@
         position: fixed;
     }
 
-    nav.dark {
-        box-shadow: 0 -0.4rem 0.9rem 0.2rem var(--darkThemeShadow); 
-    }
-
+    
     .homepage {
         text-decoration: none;
         float: left;
@@ -83,11 +72,6 @@
         transition: .4s;
     }
 
-
-    .dark .slider:before {
-        background-color: var(--darkThemeBackground);
-    }
-
     input:checked + .slider {
         background-color: var(--darkThemeHeader);
     }
@@ -123,6 +107,7 @@
         if (event.target.classList.contains("slider")) {
             darkTheme.update(value => !value);
             localStorage.setItem("darkTheme", dark);
+            dark = !dark;
         }
     }
 </script>

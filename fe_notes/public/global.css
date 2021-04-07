@@ -8,20 +8,6 @@
 	--darkThemeShadow: rgb(64 62 62 / 50%)
 }
 
-.dark textarea {
-	background-color: var(--darkThemeBackground);
-	color: var(--darkThemeText);
-}
-
-.dark .save button {
-	background-color: var(--darkThemeHeader);
-	color: var(--darkThemeBackground);
-}
-
-.dark h1 {
-	color: var(--darkThemeHeader) !important;
-}
-
 body {
 	margin: 0;
 	font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;

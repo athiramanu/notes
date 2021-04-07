@@ -1,0 +1,27 @@
+
+.dark textarea {
+	background-color: var(--darkThemeBackground);
+	color: var(--darkThemeText);
+}
+
+.dark .save button {
+	background-color: var(--darkThemeHeader);
+	color: var(--darkThemeBackground);
+}
+
+.dark h1 {
+	color: var(--darkThemeHeader) !important;
+}
+
+.dark nav{
+    box-shadow: 0 -0.4rem 0.9rem 0.2rem var(--darkThemeShadow); 
+}
+
+.dark textarea {
+    background-color: var(--darkThemeBackground);
+    color: var(--darkThemeText);
+}
+
+.dark .slider:before {
+    background-color: var(--darkThemeBackground);
+}
