@@ -25,7 +25,7 @@
 </style>
 
 <script>
-	import { darkTheme } from './store.js'
+	import { darkTheme } from '../store.js'
 	import { onDestroy } from 'svelte';
 	import Navaid from 'navaid';
 	import Navbar from './Navbar.svelte';

@@ -20,10 +20,6 @@
 		color: var(--lightThemeHeader);
 	}
 
-    .dark .steps strong,
-    .dark .disclaimer strong {
-		color: var(--darkThemeHeader);
-	}
 
     .disclaimer {
         font-size: 12px;

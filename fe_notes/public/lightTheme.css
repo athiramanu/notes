@@ -1,0 +1,16 @@
+.save button {
+	background-color: var(--lightThemeHeader);
+	color: white;
+}
+
+h1 {
+	color: var(--lightThemeHeader);
+}
+
+nav{
+    box-shadow: 0 -0.4rem 0.9rem 0.2rem var(--lightThemeShadow); 
+}
+
+.slider:before {
+    background-color: white;
+}

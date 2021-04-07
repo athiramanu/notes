@@ -17,7 +17,6 @@
         top: 0;
         left: 0;
         width: 100vw;
-        box-shadow: 0 -0.4rem 0.9rem 0.2rem var(--lightThemeShadow);
         position: fixed;
     }
 
@@ -67,7 +66,6 @@
         width: 16px;
         left: 4px;
         bottom: 4px;
-        background-color: white;
         -webkit-transition: .4s;
         transition: .4s;
     }
@@ -96,7 +94,7 @@
 </style>
 
 <script>
-    import { darkTheme } from "./store.js"
+    import { darkTheme } from "../store.js"
 
     let dark;
 	const unsubscribe = darkTheme.subscribe(value => {

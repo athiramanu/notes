@@ -62,9 +62,7 @@
 	}
 
 	button {
-		background-color: var(--lightThemeHeader);
 		border: none;
-		color: white;
 		padding: 15px 32px;
 		text-align: center;
 		text-decoration: none;
