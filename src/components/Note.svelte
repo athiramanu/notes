@@ -14,7 +14,7 @@
 	let name = "";
 
 	function save() {
-		fetch(`http://localhost:3000/${name}`, {
+		fetch(`${process.env.BACKEND_API}${name}`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -32,7 +32,7 @@
 		const isCurrent = curr && curr == postid;
 		if (!postid || isCurrent) return Promise.resolve(item);
 		name = postid;
-		return fetch(`http://localhost:3000/${name}`)
+		return fetch(`${process.env.BACKEND_API}${name}`)
 			.then(r => r.json())
 			.then(data => {
 				text = data.text

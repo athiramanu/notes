@@ -1262,7 +1262,7 @@
     	let name = "";
 
     	function save() {
-    		fetch(`http://localhost:3000/${name}`, {
+    		fetch(`${process.env.BACKEND_API}${name}`, {
     			method: "POST",
     			headers: { "Content-Type": "application/json" },
     			body: JSON.stringify({ text })
@@ -1279,7 +1279,7 @@
     		if (!postid || isCurrent) return Promise.resolve(item);
     		name = postid;
 
-    		return fetch(`http://localhost:3000/${name}`).then(r => r.json()).then(data => {
+    		return fetch(`${process.env.BACKEND_API}${name}`).then(r => r.json()).then(data => {
     			$$invalidate(0, text = data.text);
     		});
     	}
