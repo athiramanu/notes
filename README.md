@@ -1,1 +1,3 @@
-# Frontend
+# ScribbleIt
+
+Frontend using Svelte
